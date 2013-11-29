@@ -15,7 +15,13 @@
          <li><a href="/projects">Projects</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-         <li><a href="/auth/facebook">Login with FACEBOOK!</a></li>
+         {{#user}}
+          <b>{{user.name}}</b>
+{{/user}}
+{{^user}}
+  <li><a href="/auth/facebook">Login with FACEBOOK!</a></li>
+{{/user}}
+         
       </ul>
    </div>
 </nav>
