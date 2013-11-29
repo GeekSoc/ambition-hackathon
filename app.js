@@ -10,6 +10,7 @@ util = require('util'),
 path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
 config = require('./config.js');
+data = require('./lib/data.js');
 
 var app = express();
 
@@ -50,6 +51,7 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function (user, done) {
+  data.people.insert(user);
 	done(null, user);
 });
 
@@ -74,6 +76,12 @@ app.get('/auth/facebook/callback',
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
+  });
+  
+app.get('/users', function (req, res) {
+  data.listAllPeople(function(e, results){
+      res.send(results);
+    });
   });
 
 
