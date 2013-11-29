@@ -57,11 +57,11 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.facebookId);
 });
 
 passport.deserializeUser(function(id, done) {
-  data.getDistinct(id, function(err, user) {
+  data.getDistinct({ facebookId: id }, function(err, user) {
     done(err, user);
   });
 });
