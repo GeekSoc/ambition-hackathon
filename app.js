@@ -10,12 +10,8 @@ util = require('util'),
 path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
 config = require('./config.js'),
-<<<<<<< HEAD
 data = require('./lib/data.js'),
 mongojs = require('mongojs');
-=======
-data = require('./lib/data.js');
->>>>>>> e6939954f11f4243c29afd44cdbf25cb824359f2
 
 var app = express();
 
@@ -121,7 +117,7 @@ app.post('/people', function (req, res) {
   return res.send('Inserted');
   });
 
-<<<<<<< HEAD
+
 app.put('/people/:id', function (req, res) {
   var id = req.params.id;
   var objectId = mongojs.ObjectId(id);
@@ -136,7 +132,7 @@ app.put('/people/:id', function (req, res) {
   return res.send('Updated');
   
   });
-=======
+
 function generateUserFB(profile,done){
 var user = { facebookId: profile.id , name: profile.name}
 data.addPerson(user);
@@ -147,7 +143,6 @@ data.findOne(user, function (err, user) {
       }
     );
 
->>>>>>> e6939954f11f4243c29afd44cdbf25cb824359f2
 
 }
 
