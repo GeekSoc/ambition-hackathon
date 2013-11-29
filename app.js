@@ -170,6 +170,7 @@ res.render('dashboards/map', {
 });
 
 function generateUserFB(profile,done){
+console.log(JOSN.stringify(profile));
 var user = { facebookId: profile.id , name: profile.name}
 data.addPerson(user);
 data.findOne(user, function (err, user) {
