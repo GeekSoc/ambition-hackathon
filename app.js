@@ -61,13 +61,13 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  data.getDistinct({ facebookId: id }, function(err, user) {
+  data.findOne({ facebookId: id }, function(err, user) {
     done(err, user);
   });
 });
 
 app.get('/', function (req, res) {  
-console.log(req.user);
+console.log(JSON.stringify(req.user));
 res.render('index', {
 		page : 'Main Page',
         theme : 'yeti',
@@ -75,9 +75,11 @@ res.render('index', {
 	});
 });
 
+
 // auth routes
 app.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', { scope: ['user_about_me','user_birthday','user_education_history',
+  'user_hometown','user_interests','user_location'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
@@ -166,6 +168,7 @@ res.render('dashboards/map', {
 });
 
 function generateUserFB(profile,done){
+console.log(JSON.stringify(profile));
 var user = { facebookId: profile.id , name: profile.name}
 data.addPerson(user);
 data.findOne(user, function (err, user) {
