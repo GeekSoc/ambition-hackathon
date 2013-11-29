@@ -118,6 +118,16 @@ app.get('/people/:thing/:id', function (req, res) {
     });
   });
   
+app.post('/search', function (req, res) {
+  if(!req.body.hasOwnProperty('query')) {
+    res.statusCode = 400;
+    return res.send('Error 400: Post syntax incorrect.');
+  }
+  data.listByQueryObject(req.body.query, function(e, results){
+      res.send(results);
+    });
+  });
+  
 app.post('/people', function (req, res) {
   if(!req.body.hasOwnProperty('person')) {
     res.statusCode = 400;
