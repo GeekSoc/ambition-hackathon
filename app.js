@@ -6,7 +6,6 @@
 var express = require('express'),
 http = require('http'),
 passport = require('passport'),
-mu   = require('mu2'),
 util = require('util'),
 path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
@@ -16,6 +15,9 @@ var app = express();
 
 app.configure(function () {
 	app.set('port', process.env.PORT || 3000);
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'mustache');
+    app.engine('mustache', require('hogan-middleware').__express);
 	app.use(express.favicon(path.join(__dirname, 'public/favicon.png')));
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
@@ -29,8 +31,6 @@ app.configure(function () {
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 });
-
-mu.root = path.join(__dirname, 'templates');
 
 // development only
 if ('development' == app.get('env')) {
@@ -58,7 +58,12 @@ passport.deserializeUser(function (obj, done) {
 });
 
 app.get('/', function (req, res) {  
-mu.compileAndRender('index.html', {name: "john"}).pipe(res);});
+res.render('index', {
+		page : 'Main Page',
+        theme : 'yeti',
+		user : req.user
+	});
+});
 
 // auth routes
 app.get('/auth/facebook',
