@@ -44,10 +44,12 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    data.getDistinct({ facebookId: profile.id }, function (err, user) {
       return done(err, user);
-    });
+      }
+    );
   }
+  
 ));
 
 passport.serializeUser(function (user, done) {
