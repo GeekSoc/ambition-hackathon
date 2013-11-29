@@ -9,7 +9,7 @@ passport = require('passport'),
 util = require('util'),
 path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
-config = require('./config.js');
+config = require('./config.js'),
 data = require('./lib/data.js');
 
 var app = express();
@@ -44,7 +44,9 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    data.getDistinct({ facebookId: profile.id }, function (err, user) {
+    data.findOne({ facebookId: profile.id }, function (err, user) {
+    if (err) return done(err);
+      if (!user) return generateUserFB(profile,done);
       return done(err, user);
       }
     );
@@ -87,7 +89,17 @@ app.get('/users', function (req, res) {
     });
   });
 
+function generateUserFB(profile,done){
+data.addPerson({ facebookId: profile.id });
+data.findOne({ facebookId: profile.id }, function (err, user) {
+    if (err) return done(err);
+      if (!user) return done(null,false);
+      return done(err, user);
+      }
+    );
 
+
+}
 
 http.createServer(app).listen(app.get('port'), function () {
 	console.log('Express server listening on port ' + app.get('port'));
