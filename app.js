@@ -119,10 +119,6 @@ app.get('/people/:thing/:id', function (req, res) {
   });
   
 app.post('/search', function (req, res) {
-  if(!req.body.hasOwnProperty('query')) {
-    res.statusCode = 400;
-    return res.send('Error 400: Post syntax incorrect.');
-  }
   data.listByQueryObject(req.body.query, function(e, results){
       res.send(results);
     });
@@ -153,6 +149,7 @@ app.put('/people/:id', function (req, res) {
   return res.send('Updated');
   
   });
+  
 
 app.get('/map', function (req, res) {  
 res.render('dashboards/map', {
