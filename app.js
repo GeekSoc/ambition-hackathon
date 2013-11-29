@@ -83,6 +83,11 @@ app.get('/auth/facebook/callback',
     res.redirect('/');
   });
   
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+  
 app.get('/users', function (req, res) {
   data.listAllPeople(function(e, results){
       res.send(results);
@@ -90,8 +95,9 @@ app.get('/users', function (req, res) {
   });
 
 function generateUserFB(profile,done){
-data.addPerson({ facebookId: profile.id });
-data.findOne({ facebookId: profile.id }, function (err, user) {
+var user = { facebookId: profile.id , name: profile.name}
+data.addPerson(user);
+data.findOne(user, function (err, user) {
     if (err) return done(err);
       if (!user) return done(null,false);
       return done(err, user);
