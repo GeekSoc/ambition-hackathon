@@ -9,7 +9,7 @@ passport = require('passport'),
 util = require('util'),
 path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
-config = require('./config.js');
+config = require('./config.js'),
 data = require('./lib/data.js');
 
 var app = express();
