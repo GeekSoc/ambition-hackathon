@@ -61,7 +61,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  data.getDistinct({ facebookId: id }, function(err, user) {
+  data.findOne({ facebookId: id }, function(err, user) {
     done(err, user);
   });
 });
@@ -75,10 +75,6 @@ res.render('index', {
 	});
 });
 
-app.get('/test', function (req, res) {  
-console.log(JSON.stringify(req));
-res.send(JSON.stringify(req));
-});
 
 // auth routes
 app.get('/auth/facebook',
