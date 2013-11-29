@@ -1,44 +1,47 @@
-function setCookie(c_name,value,exdays) {
-	var exdate = new Date();
-	exdate.setDate(exdate.getDate() + exdays);
-	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-	document.cookie=c_name + "=" + c_value;
+var styleFile;
+
+function change() {
+	var x=document.getElementById("styleSelect").selectedIndex;
+	var y=document.getElementsByTagName("option")[x].value;
+	//alert(y);
+	changeStyle(y);
 }
 
-function checkCookie() {
-	var style = getCookie("style");
-	if(style != null && style != "") {
-		return style;
+function init() {
+	var styleCookie = getCookie("style");
+	if(styleCookie == null) {
+		changeStyle("cerulean");
 	}
 	else {
-		if (style!=null && style !="") {
-			setCookie("style", "cerulean", 365);
-			//window.location.href = redir;
+		//alert("loaded style from the cookie");
+		console.log('<link rel="stylesheet" type="text/css" href="theme/' + styleCookie + '/bootstrap.css">');
+		document.getElementById("myStyle").href = 'theme/' + styleCookie + '/bootstrap.css';
+	}
+}
+
+function getCookie(c_name) {
+	var c_value = document.cookie;
+	var c_start = c_value.indexOf(" " + c_name + "=");
+	if (c_start == -1) {
+		c_start = c_value.indexOf(c_name + "=");
+	}
+	if (c_start == -1) {
+		c_value = null;
+	}
+	else {
+		c_start = c_value.indexOf("=", c_start) + 1;
+		var c_end = c_value.indexOf(";", c_start);
+		if (c_end == -1) {
+			c_end = c_value.length;
 		}
+		c_value = unescape(c_value.substring(c_start,c_end));
 	}
+	return c_value;
 }
 
-function changeStyle(style, redir) {
-	switch(style) {
-		case "Amelia":
-		case "Cerulean":
-		case "Cosmo": 
-		case "Custom":
-		case "Cyborg":
-		case "Flatly":
-		case "Journal":
-		case "Readable":
-		case "Simplex":
-		case "Slate":
-		case "Spacelab":
-		case "United":
-		case "Yeti":
-			setCookie("style", style, 365);
-			break;
-		case "Classic":
-			setCookie("style", "cerulean", 365);
-			break;
-	}
-	window.location.href = redir;
+function changeStyle( styleName ){
+	var CookieDate = new Date;
+	CookieDate.setFullYear(CookieDate.getFullYear( ) +10);
+	document.cookie = "style=" + styleName + "; expires=" + CookieDate.toGMTString() + ";";
+	window.location.reload();
 }
-

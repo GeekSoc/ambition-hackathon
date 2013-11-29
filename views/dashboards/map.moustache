@@ -1,0 +1,9 @@
+
+  <div class='mainCanvas' id='{{mapelement}}'>
+
+  </div>
+
+
+
+  {{> jquery}}
+  {{> openstreetmap}}
