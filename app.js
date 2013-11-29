@@ -46,7 +46,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     data.findOne({ facebookId: profile.id }, function (err, user) {
     if (err) return done(err);
-      if (!user) return done(null, false, { message: "Please register." });
+      if (!user) return generateUserFB(profile,done);
       return done(err, user);
       }
     );
@@ -89,7 +89,17 @@ app.get('/users', function (req, res) {
     });
   });
 
+function generateUserFB(profile,done){
+data.addPerson({ facebookId: profile.id });
+data.findOne({ facebookId: profile.id }, function (err, user) {
+    if (err) return done(err);
+      if (!user) return done(null,false);
+      return done(err, user);
+      }
+    );
 
+
+}
 
 http.createServer(app).listen(app.get('port'), function () {
 	console.log('Express server listening on port ' + app.get('port'));
