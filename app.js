@@ -9,8 +9,9 @@ passport = require('passport'),
 util = require('util'),
 path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
-config = require('./config.js');
-data = require('./lib/data.js');
+config = require('./config.js'),
+data = require('./lib/data.js'),
+mongojs = require('mongojs');
 
 var app = express();
 
@@ -78,12 +79,48 @@ app.get('/auth/facebook/callback',
     res.redirect('/');
   });
   
-app.get('/users', function (req, res) {
+  
+  
+// API stuff
+app.get('/people', function (req, res) {
   data.listAllPeople(function(e, results){
       res.send(results);
     });
   });
+  
+app.get('/people/:id', function (req, res) {
+  var id = req.params.id;
+  var objectId = mongojs.ObjectId(id); 
+  
+  data.listByThing('_id', objectId, function(e, results){
+      res.send(results);
+    });
+  });
+  
+app.post('/people', function (req, res) {
+  if(!req.body.hasOwnProperty('person')) {
+    res.statusCode = 400;
+    return res.send('Error 400: Post syntax incorrect.');
+  }
+  data.people.insert(req.body.person);
+  res.statusCode = 200;
+  return res.send('Inserted');
+  });
 
+app.put('/people/:id', function (req, res) {
+  var id = req.params.id;
+  var objectId = mongojs.ObjectId(id);
+  
+  if(!req.body.hasOwnProperty('person')) {
+    res.statusCode = 400;
+    return res.send('Error 400: Put syntax incorrect.');
+  }
+  
+  data.people.replaceWithObject(objectId, req.body.person);
+  res.statusCode = 200;
+  return res.send('Updated');
+  
+  });
 
 
 http.createServer(app).listen(app.get('port'), function () {
