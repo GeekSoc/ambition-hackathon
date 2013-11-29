@@ -9,7 +9,7 @@
     "express": "*",
     "passport": "*",
     "passport-facebook": "*",
-    "mu2": "*",
+    "hogan-middleware": "*",
     "mongojs": "*"
   }
 }
