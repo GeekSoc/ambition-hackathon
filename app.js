@@ -57,16 +57,17 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.facebookId);
 });
 
 passport.deserializeUser(function(id, done) {
-  data.getDistinct(id, function(err, user) {
+  data.getDistinct({ facebookId: id }, function(err, user) {
     done(err, user);
   });
 });
 
 app.get('/', function (req, res) {  
+console.log(req.user);
 res.render('index', {
 		page : 'Main Page',
         theme : 'yeti',
@@ -99,11 +100,20 @@ app.get('/people', function (req, res) {
     });
   });
   
-app.get('/people/:id', function (req, res) {
+app.get('/people/id/:id', function (req, res) {
   var id = req.params.id;
   var objectId = mongojs.ObjectId(id); 
   
   data.listByThing('_id', objectId, function(e, results){
+      res.send(results);
+    });
+  });
+  
+app.get('/people/:thing/:id', function (req, res) {
+  var id = req.params.id;
+  var thing = req.params.thing;
+
+  data.listByThing(thing, id, function(e, results){
       res.send(results);
     });
   });
