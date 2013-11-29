@@ -78,8 +78,8 @@ res.render('index', {
 
 // auth routes
 app.get('/auth/facebook',
-  passport.authenticate('facebook'), { scope: ['user_about_me','user_birthday','user_education_history',
-  'user_hometown','user_interests','user_location'] });
+  passport.authenticate('facebook', { scope: ['user_about_me','user_birthday','user_education_history',
+  'user_hometown','user_interests','user_location'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
