@@ -44,7 +44,9 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    data.getDistinct({ facebookId: profile.id }, function (err, user) {
+    data.findOne({ facebookId: profile.id }, function (err, user) {
+    if (err) return done(err);
+      if (!user) return done(null, false, { message: "Please register." });
       return done(err, user);
       }
     );
