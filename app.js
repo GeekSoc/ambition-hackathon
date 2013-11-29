@@ -11,12 +11,13 @@ path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
 config = require('./config.js'),
 data = require('./lib/data.js');
+var path = require("path");
 
 var app = express();
 
 app.configure(function () {
 	app.set('port', process.env.PORT || 3000);
-    app.set('views', __dirname + '/views');
+    app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'mustache');
     app.engine('mustache', require('hogan-middleware').__express);
 	app.use(express.favicon(path.join(__dirname, 'public/favicon.png')));
@@ -88,6 +89,14 @@ app.get('/users', function (req, res) {
       res.send(results);
     });
   });
+
+
+app.get('/map', function (req, res) {  
+res.render('dashboards/map', {
+    page : 'Map',
+    mapelement : 'map'
+  });
+});
 
 function generateUserFB(profile,done){
 data.addPerson({ facebookId: profile.id });
