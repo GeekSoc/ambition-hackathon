@@ -2,34 +2,3 @@
 <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
 <script type="text/javascript" src="heatcanvas/heatcanvas.js"></script>
 <script type="text/javascript" src="heatcanvas/heatcanvas-openlayers.js"></script>
-
-<script type="text/javascript">
-	var map = new OpenLayers.Map('{{mapelement}}', {
-		controls: [
-                      new OpenLayers.Control.Attribution(),
-                      new OpenLayers.Control.Navigation()
-                  ],
-                  maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,
-                                                   20037508.34,20037508.34),
-                  numZoomLevels: 12,
-                  maxResolution: 156543.0339,
-                  displayProjection: new OpenLayers.Projection("EPSG:4326"),
-                  units: 'm',
-                  projection: new OpenLayers.Projection("EPSG:4326")
-	});
-	var osm = new OpenLayers.Layer.OSM.Mapnik();
-    map.addLayer(osm);
-    map.setBaseLayer(osm);
-
-    map.zoomToMaxExtent();
-
-    var heatmap = new OpenLayers.Layer.HeatCanvas("HeatCanvas", map, {},{'step':1, 'degree':HeatCanvas.QUAD, 'opacity':0.5});
-
-  heatmap.pushData(55.8506080519,  -4.26492576329,100);
-	heatmap.pushData(55.8613701277,  -4.24460130892,100);
-	heatmap.pushData(55.4906916873,  -4.60522901822,1000);
-	heatmap.pushData( 55.8651840586, -4.2216469545 , 300);
-	
-    map.addLayer(heatmap);
-
-</script>
