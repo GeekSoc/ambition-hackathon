@@ -52,13 +52,14 @@ passport.use(new FacebookStrategy({
   
 ));
 
-passport.serializeUser(function (user, done) {
-  data.people.insert(user);
-	done(null, user);
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 
-passport.deserializeUser(function (obj, done) {
-	done(null, obj);
+passport.deserializeUser(function(id, done) {
+  data.getDistinct(id, function(err, user) {
+    done(err, user);
+  });
 });
 
 app.get('/', function (req, res) {  
