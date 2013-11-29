@@ -67,6 +67,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 app.get('/', function (req, res) {  
+console.log(req.user);
 res.render('index', {
 		page : 'Main Page',
         theme : 'yeti',
