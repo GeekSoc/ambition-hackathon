@@ -75,6 +75,11 @@ res.render('index', {
 	});
 });
 
+app.get('/test', function (req, res) {  
+console.log(JSON.stringify(req));
+res.send(JSON.stringify(req));
+});
+
 // auth routes
 app.get('/auth/facebook',
   passport.authenticate('facebook'));
