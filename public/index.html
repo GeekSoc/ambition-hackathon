@@ -116,22 +116,21 @@
 						<p>Template &amp; Styles <a href="http://getbootstrap.com">(Bootswatch)</a> by <a href="http://thomaspark.me">Thomas Park</a>. Based on <a href="http://getbootstrap.com">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts">Google</a>.</p>
 						</small>
 
-						<form action="form.style.php" method="POST">
+						<form>
 							<select name="styleSelect">
-								<option id="amelia">Amelia</option>
-								<option id="cerulean">Cerulean</option>
-								<option id="cosmo">Cosmo</option>
-								<option id="custom">Custom</option>
-								<option id="cyborg">Cyborg</option>
-								<option id="flatly">Flatly</option>
-								<option id="journal">Journal</option>
-								<option id="readable">Readable</option>
-								<option id="simplex">Simplex</option>
-								<option id="slate">Slate</option>
-								<option id="spacelab">Spacelab</option>
-								<option id="united">United</option>
-								<option id="yeti">Yeti</option>
-								<option id="classic">Classic</option>
+								<option onclick="changeStyle('amelia')" id="amelia">Amelia</option>
+								<option onclick="changeStyle('cerulean')" id="cerulean">Cerulean</option>
+								<option onclick="changeStyle('cosmo')" id="cosmo">Cosmo</option>
+								<option onclick="changeStyle('custom')" id="custom">Custom</option>
+								<option onclick="changeStyle('cyborg')" id="cyborg">Cyborg</option>
+								<option onclick="changeStyle('flatly')" id="flatly">Flatly</option>
+								<option onclick="changeStyle('journal')" id="journal">Journal</option>
+								<option onclick="changeStyle('readable')" id="readable">Readable</option>
+								<option onclick="changeStyle('simplex')" id="simplex">Simplex</option>
+								<option onclick="changeStyle('slate')" id="slate">Slate</option>
+								<option onclick="changeStyle('spacelab')" id="spacelab">Spacelab</option>
+								<option onclick="changeStyle('united')" id="united">United</option>
+								<option onclick="changeStyle('yeti')" id="yeti">Yeti</option>
 							</select>
 							<button type="submit" class="btn btn-primary btn-xs" value="submit">Change Style</button>
 						</form>
