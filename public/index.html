@@ -4,8 +4,31 @@
 		<title>GEEKSOCK HACKATHON</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
-		<script src="styleSelect.js"></script>
-		<link rel="stylesheet" href="theme/<script>print checkCookie();</script>/bootstrap.css" media="screen">
+		<script>
+		var styleFile;
+
+		function checkCookie() {
+			var style = getCookie("style");
+			if(style != null && style != "") {
+				styleFile = "/theme/" + style + "/bootstrap.css";
+			}
+			else {
+				if (style!=null && style !="") {
+					setCookie("style", "cerulean", 365);
+					styleFile = "/theme/cerulean/bootstrap.css";
+					//window.location.href = redir;
+				}
+			}
+		}
+		document.writeln('<link rel="stylesheet" type="text/css" href="' + styleFile + '">');
+
+		function changeStyle( styleName ){
+			var CookieDate = new Date;
+			CookieDate.setFullYear(CookieDate.getFullYear( ) +10);
+			document.cookie = "style=" + styleName + "; expires=" + CookieDate.toGMTString() + ";";
+			window.location.reload();
+		}
+		</script>
 		<link rel="stylesheet" href="theme/bower_components/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="theme/assets/css/bootswatch.min.css">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
