@@ -98,11 +98,20 @@ app.get('/people', function (req, res) {
     });
   });
   
-app.get('/people/:id', function (req, res) {
+app.get('/people/id/:id', function (req, res) {
   var id = req.params.id;
   var objectId = mongojs.ObjectId(id); 
   
   data.listByThing('_id', objectId, function(e, results){
+      res.send(results);
+    });
+  });
+  
+app.get('/people/:thing/:id', function (req, res) {
+  var id = req.params.id;
+  var thing = req.params.thing;
+
+  data.listByThing(thing, id, function(e, results){
       res.send(results);
     });
   });
