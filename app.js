@@ -317,25 +317,25 @@ if(person.ruralClassification == 1){
   person.ruralClassification = "Remote Rural Area"
 } else if(person.ruralClassification == 8) {
   person.ruralClassification = "Very Remote Rural Area"
-} else if(person.ruralClassification == A1) {
+} else if(person.ruralClassification == "A1") {
   person.ruralClassification = "Urban Major Conurbation"
-} else if(person.ruralClassification == B1) {
+} else if(person.ruralClassification == "B1") {
   person.ruralClassification = "Urban Minor Conurbation"
-} else if(person.ruralClassification == C1) {
+} else if(person.ruralClassification == "C1") {
   person.ruralClassification = "Urban City and Town"
-} else if(person.ruralClassification == C2) {
+} else if(person.ruralClassification == "C2") {
   person.ruralClassification = "Urban City and Town (Sparse)"
-} else if(person.ruralClassification == D1) {
+} else if(person.ruralClassification == "D1") {
   person.ruralClassification = "Rural Town and Fringe"
-} else if(person.ruralClassification == D2) {
+} else if(person.ruralClassification == "D2") {
   person.ruralClassification = "Rural Town and Fringe (Sparse)"
-} else if(person.ruralClassification == E1) {
+} else if(person.ruralClassification == "E1") {
   person.ruralClassification = "Rural Village"
-} else if(person.ruralClassification == E2) {
+} else if(person.ruralClassification == "E2") {
   person.ruralClassification = "Rural Village (Sparse)"
-} else if(person.ruralClassification == F1) {
+} else if(person.ruralClassification == "F1") {
   person.ruralClassification = "Rural Hamlet"
-} else if(person.ruralClassification == F2) {
+} else if(person.ruralClassification == "F2") {
   person.ruralClassification = "Rural Hamlet (Sparse)"
 } else {
   person.ruralClassification = "Unknown"
