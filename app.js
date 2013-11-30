@@ -210,9 +210,10 @@ res.render('dashboards/bargraph', {
 
 app.get('/persons', function (req, res) {  
   data.listByQueryObject({},function(e, people){
+    console.log(people);
     res.render('dashboards/people', {
         page : 'People',
-        persons : people
+        persons: people
       });
     });
 });
