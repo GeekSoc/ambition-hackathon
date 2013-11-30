@@ -78,7 +78,8 @@ res.render('index', {
 
 // auth routes
 app.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', { scope: ['user_about_me','user_birthday','user_education_history',
+  'user_hometown','user_interests','user_location'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
@@ -166,7 +167,7 @@ res.render('dashboards/map', {
 });
 
 function generateUserFB(profile,done){
-var user = { facebookId: profile.id , name: profile.name}
+var user = { facebookId: profile.id , name: profile.name,gender: profile.gender,location: profile.location,birthday: profile.birthday}
 data.addPerson(user);
 data.findOne(user, function (err, user) {
     if (err) return done(err);
