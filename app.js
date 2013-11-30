@@ -230,8 +230,11 @@ res.render('dashboards/piechart', {
 app.get('/broadband', function (req, res) { 
  data.listByQueryObject(req.query, function(e, results){
   var availability = {};
+  availability['Yes'] = 0;
+  availability['No']  = 0;
   for (var i = results.length - 1; i >= 0; i--) {
     if (results[i].broadband){
+
       availability['Yes'] += 1;
     } else {
       availability['No'] += 1;
