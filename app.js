@@ -87,17 +87,15 @@ res.render('account', {
 });
 
 app.post('/account',function (req, res) {
-  var user = req.user;
-  user.facebookId = user.facebookId;
-  user.name = {familyName:user.familyName,givenName:user.givenName};
-  user.familyName,user.givenName = null;
-  console.log(JSON.stringify(user));
-  deriver.annotate(user, function(err, user){
-    console.log(JSON.stringify(user));
-    data.updatePerson(user.facebookId,user);
-    res.statusCode = 200;
-    res.redirect('/account'); 
-  });
+  req.body.facebookId = req.user.facebookId;
+  req.body.name = {familyName:req.body.familyName,givenName:req.body.givenName};
+  req.body.familyName,req.body.givenName = null;
+  //data.updatePerson(req.body);
+  console.log(JSON.stringify(req.user));
+  data.updatePerson(req.user.facebookId,req.body);
+  //console.log(JSON.stringify(req.body));
+  res.statusCode = 200;
+  return res.send('Inserted');
 });
 
 
