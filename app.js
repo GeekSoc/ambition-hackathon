@@ -166,6 +166,7 @@ res.render('dashboards/map', {
   });
 });
 
+
 function generateUserFB(profile,done){
 var user = { facebookId: profile.id , name: profile.name,gender: profile.gender,location: profile.location,birthday: profile.birthday}
 data.addPerson(user);
