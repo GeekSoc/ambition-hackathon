@@ -94,7 +94,7 @@ app.post('/account',function (req, res) {
   console.log(JSON.stringify(req.user));
   
   deriver.annotate(req.body, function(error, user) {
-  data.updatePerson(req.user.facebookId,user);
+  data.updatePerson(user.facebookId,user);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
   return res.redirect('/account'); 
