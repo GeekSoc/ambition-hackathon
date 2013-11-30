@@ -252,7 +252,7 @@ app.get('/internet', function (req, res) {
 app.get('/piechart/:information', function (req, res) { 
  data.listByQueryObject(req.query, function(e, results){
   var things= {};
-  var information = req.param("information");
+  var information = req.params.information;
   console.log(information);
   for (var i = results.length - 1; i >= 0; i--) {
     if (results[information] == undefined){
