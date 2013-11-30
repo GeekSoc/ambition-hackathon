@@ -88,17 +88,15 @@ res.render('account', {
 
 app.post('/account',function (req, res) {
   var user = req.user;
-  user.facebookId = req.user.facebookId;
+  user.facebookId = user.facebookId;
   user.name = {familyName:user.familyName,givenName:user.givenName};
   user.familyName,user.givenName = null;
-  //data.updatePerson(req.body);
   console.log(JSON.stringify(user));
   deriver.annotate(user, function(err, user){
     console.log(JSON.stringify(user));
     data.updatePerson(user.facebookId,user);
-    //console.log(JSON.stringify(req.body));
     res.statusCode = 200;
-    return res.send('Inserted');
+    res.redirect('/account'); 
   });
 });
 
