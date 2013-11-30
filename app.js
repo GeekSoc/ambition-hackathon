@@ -227,7 +227,7 @@ res.render('dashboards/piechart', {
   });
 });
 
-app.get('/broadband', function (req, res) { 
+app.get('/internet', function (req, res) { 
  data.listByQueryObject(req.query, function(e, results){
   console.log(results);
   var availability = {};
@@ -248,6 +248,41 @@ app.get('/broadband', function (req, res) {
             {label:"Yes", value:availability['Yes'], comma: true},
             {label:"No", value:availability['No']}
           ]
+      });
+    });
+});
+
+app.get('/piechart/:information', function (req, res) { 
+ data.listByQueryObject(req.query, function(e, results){
+  var things= {};
+  var information = req.param("information");
+  for (var i = results.length - 1; i >= 0; i--) {
+    if (results[information] == undefined){
+      if (things["N/A"] == null){
+        things["N/A"] = 0;
+      }
+      things["N/A"]++;
+    } else {
+
+      if (things[results[information]] == null){
+        things[results[information]] = 0;
+      }
+      things[results[information]]++;
+    }
+  }
+
+  var keys = Object.keys(things);
+  var pointgen = [];
+  for (var i = keys.length - 1; i >= 0; i--) {
+    var key = keys[i];
+    var comma = (keys > 0);
+    pointgen = {"label": key, "value": things[key], "comma": comma};
+  };
+  console.log(availability);
+    res.render('dashboards/piechart', {
+        page : 'Map',
+        pie_element_name : 'graph',
+        datapoints: pointgen;
       });
     });
 });
