@@ -131,7 +131,7 @@ app.get('/people/:thing/:id', function (req, res) {
   });
   
 app.post('/search', function (req, res) {
-  data.listByQueryObject(req.body.query, function(e, results){
+  data.listByQueryObject(req.body, function(e, results){
       res.send(results);
     });
   });
