@@ -213,18 +213,39 @@ res.render('dashboards/bargraph', {
   });
 });
 
-app.get('/piechart', function (req, res) {  
+app.get('/piechart', function (req, res) { 
 res.render('dashboards/piechart', {
     page : 'Map',
     pie_element_name : 'graph',
     datapoints: [
-      {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
-        {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},
-        {latitude: 55.4906916873, longitude: -4.60522901822, weight: 100},
-        {latitude: 55.8651840586, longitude: -4.2216469545 , weight: 100}
+        {label:"Things1", value:100, comma: true},
+        {label:"Things2", value:200, comma: true},
+        {label:"Things3", value:300, comma: true},
+        {label:"Things4", value:400}
       ]
     
   });
+});
+
+app.get('/broadband', function (req, res) { 
+ data.listByQueryObject(req.query, function(e, results){
+  var availability = {};
+  for (var i = results.length - 1; i >= 0; i--) {
+    if (results[i].broadband){
+      availability['Yes'] += 1;
+    } else {
+      availability['No'] += 1;
+    }
+  };
+    res.render('dashboards/piechart', {
+        page : 'Map',
+        pie_element_name : 'graph',
+        datapoints: [
+            {label:"Yes", value:availability['Yes'], comma: true},
+            {label:"No", value:availability['No']}
+          ]
+      });
+    });
 });
 
 
