@@ -27,46 +27,51 @@
 									
 									
 									<label class="control-label" for="inputSmall">Postcode</label>
-									<input class="form-control input-sm" type="text" id="location" value="{{location}}">
+									<input class="form-control input-sm" type="text" value="location" value="{{location}}">
 									
 									<label class="control-label" for="inputSmall">Birthday</label>
 									
-										<input class="form-control input-sm datepicker" type="text" id="birthday" data-date-format="dd-mm-yyyy" value="{{birthday}}">
+										<input class="form-control input-sm datepicker" type="text" value="birthday" data-date-format="mm/dd/yyyy" value="{{birthday}}">
 							
 
 									<label class="control-label" for="inputSmall">Ethnicity</label>
 									<select class="form-control" name="ethnicity">
-										<option id="31">Asian or Asian British - Bangladeshi</option>
-										<option id="32">Asian or Asian British - Indian</option>
-										<option id="33">Asian or Asian British - Pakistani</option>
-										<option id="34">Asian or Asian British – Any other Asian background</option>
-										<option id="35">Black or Black British – African</option>
-										<option id="36">Black or Black British – Caribbean</option>
-										<option id="37">Black or Black British – any other Black background</option>
-										<option id="38">Chinese</option>
-										<option id="39">Mixed – White and Asian</option>
-										<option id="40">Mixed – White and Black Caribbean</option>
-										<option id="41">Mixed – Any other mixed background</option>
-										<option id="42">White – British</option>
-										<option id="43">White – Irish</option>
-										<option id="44">White – Any other White background</option>
-										<option id="45">Any other</option>
+										<option value="31">Asian or Asian British - Bangladeshi</option>
+										<option value="32">Asian or Asian British - Indian</option>
+										<option value="33">Asian or Asian British - Pakistani</option>
+										<option value="34">Asian or Asian British – Any other Asian background</option>
+										<option value="35">Black or Black British – African</option>
+										<option value="36">Black or Black British – Caribbean</option>
+										<option value="37">Black or Black British – any other Black background</option>
+										<option value="38">Chinese</option>
+										<option value="39">Mixed – White and Asian</option>
+										<option value="40">Mixed – White and Black Caribbean</option>
+										<option value="41">Mixed – Any other mixed background</option>
+										<option value="42">White – British</option>
+										<option value="43">White – Irish</option>
+										<option value="44">White – Any other White background</option>
+										<option value="45">Any other</option>
 									</select>
 									
 									<label class="control-label" for="inputSmall">Disability</label>
 									<select class="form-control" name="disability">
-										<option id="24">None</option>
-										<option id="25">Physical disability</option>
-										<option id="26">Learning disability</option>
-										<option id="27">Long term health need</option>
-										<option id="28">Sensory visual/hearing</option>
-										<option id="29">Other</option>
+										<option value="24">None</option>
+										<option value="25">Physical disability</option>
+										<option value="26">Learning disability</option>
+										<option value="27">Long term health need</option>
+										<option value="28">Sensory visual/hearing</option>
+										<option value="29">Other</option>
 									</select>
 									
 									
 									<br />
 									<button type="submit" class="btn btn-primary btn-lg" value="submit">Save Changes</button>
 									
+                                    <script>
+                                    $( "option[value='{{gender}}']" ).attr('selected', 'selected');
+                                    $( "option[value='{{disability}}']" ).attr('selected', 'selected');
+                                    $( "option[value='{{ethnicity}}']" ).attr('selected', 'selected');
+                                    </script>
 									
 								</form>
 							{{/user}}

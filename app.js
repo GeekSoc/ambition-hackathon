@@ -215,7 +215,13 @@ app.get('/persons', function (req, res) {
 
 
 function generateUserFB(profile,done){
-var user = { facebookId: profile.id , name: profile.name,gender: profile.gender,location: profile.location,birthday: profile.birthday}
+var g = 2;
+if(profile.gender == "male"){
+g = 0;
+}else if (profile.gender == "female"){
+g = 1
+}
+var user = { facebookId: profile.id , name: profile.name,gender: g,location: profile.location,birthday: profile.birthday}
 data.addPerson(user);
 data.findOne(user, function (err, user) {
     if (err) return done(err);
