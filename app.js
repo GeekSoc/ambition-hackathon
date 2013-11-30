@@ -229,6 +229,7 @@ res.render('dashboards/piechart', {
 
 app.get('/broadband', function (req, res) { 
  data.listByQueryObject(req.query, function(e, results){
+  console.log(results);
   var availability = {};
   availability['Yes'] = 0;
   availability['No']  = 0;
