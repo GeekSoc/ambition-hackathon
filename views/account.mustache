@@ -10,8 +10,6 @@
 							<h1>Account</h1>
 							{{#user}}
 								<form>
-									<script src="bootstrap-datepicker.js"></script>
-									<script>$('.datepicker').datepicker()</script>
 								
 									<label class="control-label" for="inputSmall">Forename</label>
 									<input class="form-control input-sm" type="text" id="forename" value="{{forename}}">
@@ -35,7 +33,7 @@
 									<input class="form-control input-sm" type="text" id="forename" value="{{location}}">
 									
 									<label class="control-label" for="inputSmall">Birthday</label>
-									<input class="form-control input-sm" type="text" id="forename" class="datepicker" value="{{birthday}}">
+									<input class="form-control input-sm datepicker" type="text" id="forename" value="{{birthday}}">
 									
 									
 								</form>
