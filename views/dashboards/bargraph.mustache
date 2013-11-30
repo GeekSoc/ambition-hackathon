@@ -1,0 +1,43 @@
+<div id='{{bar_element_name}}'>
+
+</div>
+
+
+{{> nvd3}}
+
+<script>
+
+nv.addGraph(function() {
+     var chart = nv.models.multiBarChart();
+ 
+     chart.xAxis
+         .tickFormat(d3.format(',f'));
+ 
+     chart.yAxis
+         .tickFormat(d3.format(',.1f'));
+ 
+     d3.select('#{{bar_element_name}}')
+         .datum(data)
+       .transition().duration(500).call(chart);
+ 
+     nv.utils.windowResize(chart.update);
+ 
+     return chart;
+ });
+ 
+ var data = [
+ 	{key: "test", values:[1,2,3,4,5,6,7,8,9]}
+ ]
+ 
+ 
+ 
+ function exampleData() {
+   return stream_layers(3,10+Math.random()*100,.1).map(function(data, i) {
+     return {
+       key: 'Stream' + i,
+       values: data
+     };
+   });
+ }
+
+</script>
