@@ -10,6 +10,8 @@
 							<h1>Account</h1>
 							{{#user}}
 								<form>
+									
+									<script>$('.datepicker').datepicker()</script>
 								
 									<label class="control-label" for="inputSmall">Forename</label>
 									<input class="form-control input-sm" type="text" id="forename" value="{{forename}}">
@@ -22,10 +24,18 @@
 									
 									
 									<label class="control-label" for="inputSmall">Gender</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{gender}}">
+									<select name="gender">
+										<option value="male">Male</option>
+										<option value="female">Female</option>
+										<option value="other">Other</option>
+									</select>
+									
 									
 									<label class="control-label" for="inputSmall">Location</label>
 									<input class="form-control input-sm" type="text" id="forename" value="{{location}}">
+									
+									<label class="control-label" for="inputSmall">Birthday</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{birthday}}">
 									
 									
 								</form>
