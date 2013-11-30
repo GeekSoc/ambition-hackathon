@@ -255,17 +255,18 @@ app.get('/piechart/:information', function (req, res) {
   var information = req.param("information");
   console.log("This is an information",information);
   for (var i = results.length - 1; i >= 0; i--) {
-    if (results[information] == undefined){
+    var result = results[i];
+    if (result[information] == null){
       if (things["N/A"] == null){
         things["N/A"] = 0;
       }
       things["N/A"]++;
     } else {
 
-      if (things[results[information]] == null){
-        things[results[information]] = 0;
+      if (things[result[information]] == null){
+        things[result[information]] = 0;
       }
-      things[results[information]]++;
+      things[result[information]]++;
     }
   }
 
