@@ -256,7 +256,8 @@ app.get('/piechart/:information', function (req, res) {
   console.log("This is an information",information);
   for (var i = results.length - 1; i >= 0; i--) {
     var result = results[i];
-    console.log("ED",result[information]);
+
+    console.log("ED",result);
     if (result[information] == null){
 
       if (things["N/A"] == null){
