@@ -121,6 +121,10 @@ app.get('/people/:thing/:id', function (req, res) {
   });
   
 app.post('/search', function (req, res) {
+  if(!req.body.hasOwnProperty('query')) {
+    res.statusCode = 400;
+    return res.send('Error 400: Post syntax incorrect.');
+  }
   data.listByQueryObject(req.body.query, function(e, results){
       res.send(results);
     });
@@ -151,7 +155,6 @@ app.put('/people/:id', function (req, res) {
   return res.send('Updated');
   
   });
-  
 
 app.get('/map', function (req, res) {  
 res.render('dashboards/map', {
@@ -168,8 +171,7 @@ res.render('dashboards/map', {
 });
 
 function generateUserFB(profile,done){
-console.log(JSON.stringify(profile));
-var user = { facebookId: profile.id , name: profile.name}
+var user = { facebookId: profile.id , name: profile.name,gender: profile.gender,location: profile.location,birthday: profile.birthday}
 data.addPerson(user);
 data.findOne(user, function (err, user) {
     if (err) return done(err);
