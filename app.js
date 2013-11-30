@@ -93,10 +93,11 @@ app.post('/account',function (req, res) {
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.user));
   deriver.annotate(req.user, function(err, user){
-  data.updatePerson(req.user.facebookId,user);
-  //console.log(JSON.stringify(req.body));
-  res.statusCode = 200;
-  return res.send('Inserted');
+    console.log(JSON.stringify(user));
+    data.updatePerson(req.user.facebookId,user);
+    //console.log(JSON.stringify(req.body));
+    res.statusCode = 200;
+    return res.send('Inserted');
   });
 });
 
