@@ -183,7 +183,7 @@ res.render('dashboards/map', {
 });
 
 app.get('/bargraph', function (req, res) {  
-res.render('dashboards/map', {
+res.render('dashboards/bargraph', {
     page : 'Map',
     bar_graph_element : 'graph',
     datapoints: [
