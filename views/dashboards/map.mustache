@@ -11,6 +11,7 @@
   var map = new OpenLayers.Map('{{mapelement}}', {
     controls: [
                       new OpenLayers.Control.Attribution(),
+                      new OpenLayers.Control.PanZoomBar(),
                       new OpenLayers.Control.Navigation()
                   ],
                   maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,
