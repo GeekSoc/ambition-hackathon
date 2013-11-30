@@ -9,16 +9,16 @@
 						<div class="col-lg-12">
 							<h1>Account</h1>
 							{{#user}}
-								<form>
+								<form method="POST">
 								
 									<label class="control-label" for="inputSmall">Forename</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{forename}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{name.forename}}">
 									
 									<label class="control-label" for="inputSmall">Surname</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{surname}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{name.surname}}">
 									
 									<label class="control-label" for="inputSmall">Given Name</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{givenName}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{name.givenName}}">
 									
 									
 									<label class="control-label" for="inputSmall">Gender</label>
@@ -65,8 +65,8 @@
 									</select>
 									
 									
-									
-									<a class="btn btn-primary btn-lg">Save Changes</a>
+									<br />
+									<button type="submit" class="btn btn-primary btn-lg">Save Changes</a>
 									
 									
 								</form>
