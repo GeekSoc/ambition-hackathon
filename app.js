@@ -72,7 +72,6 @@ app.get('/', function (req, res) {
 console.log(JSON.stringify(req.user));
 res.render('index', {
 		page : 'Main Page',
-        theme : 'yeti',
 		user : req.user
 	});
 });
@@ -81,7 +80,6 @@ app.get('/account', function (req, res) {
 console.log(JSON.stringify(req.user));
 res.render('account', {
 		page : 'Main Page',
-        theme : 'yeti',
 		user : req.user
 	});
 });
@@ -124,7 +122,6 @@ app.get('/logout', function(req, res){
 app.get('/about', function (req, res) {  
 res.render('about', {
     page : 'About',
-        theme : 'yeti',
   });
 });
 // API stuff
@@ -303,7 +300,47 @@ if(person.gender == 0){
             }else if(person.gender == 2){
               person.gender = "other";
             }
-            people[i] = person;
+            
+if(person.ruralClassification == 1){
+    person.ruralClassification = "Large Urban Area"
+} else if(person.ruralClassification == 2) {
+  person.ruralClassification = "Other Urban Area"
+} else if(person.ruralClassification == 3) {
+  person.ruralClassification = "Accessible Small Town"
+} else if(person.ruralClassification ==4) {
+  person.ruralClassification = "Remote Small Town"
+} else if(person.ruralClassification == 5) {
+  person.ruralClassification = "Very Remote Small Town"
+} else if(person.ruralClassification == 6) {
+  person.ruralClassification = "Accessible Rural Area"
+} else if(person.ruralClassification == 7) {
+  person.ruralClassification = "Remote Rural Area"
+} else if(person.ruralClassification == 8) {
+  person.ruralClassification = "Very Remote Rural Area"
+} else if(person.ruralClassification == A1) {
+  person.ruralClassification = "Urban Major Conurbation"
+} else if(person.ruralClassification == B1) {
+  person.ruralClassification = "Urban Minor Conurbation"
+} else if(person.ruralClassification == C1) {
+  person.ruralClassification = "Urban City and Town"
+} else if(person.ruralClassification == C2) {
+  person.ruralClassification = "Urban City and Town (Sparse)"
+} else if(person.ruralClassification == D1) {
+  person.ruralClassification = "Rural Town and Fringe"
+} else if(person.ruralClassification == D2) {
+  person.ruralClassification = "Rural Town and Fringe (Sparse)"
+} else if(person.ruralClassification == E1) {
+  person.ruralClassification = "Rural Village"
+} else if(person.ruralClassification == E2) {
+  person.ruralClassification = "Rural Village (Sparse)"
+} else if(person.ruralClassification == F1) {
+  person.ruralClassification = "Rural Hamlet"
+} else if(person.ruralClassification == F2) {
+  person.ruralClassification = "Rural Hamlet (Sparse)"
+} else {
+  person.ruralClassification = "Unknown"
+}
+people[i] = person;
 }
     res.render('dashboards/people', {
         page : 'People',
