@@ -7,17 +7,27 @@
 					<div class="row">
 						
 						<div class="col-lg-12">
-							<h1>Accounts</h1>
+							<h1>Account</h1>
 							{{#user}}
 								<form>
+								
 									<label class="control-label" for="inputSmall">Forename</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{x}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{forename}}">
 									
 									<label class="control-label" for="inputSmall">Surname</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{x}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{surname}}">
 									
-									<label class="control-label" for="inputSmall">Email</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{x}}">
+									<label class="control-label" for="inputSmall">Given Name</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{givenName}}">
+									
+									
+									<label class="control-label" for="inputSmall">Gender</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{gender}}">
+									
+									<label class="control-label" for="inputSmall">Location</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{location}}">
+									
+									
 								</form>
 							{{/user}}
 									
@@ -28,6 +38,5 @@
 			</div>
 			<!-- Content End
 			================================================== -->
-{{user}}
 
 {{>footer}}
