@@ -181,19 +181,23 @@ app.put('/people/:id', function (req, res) {
   
   });
 
-app.get('/map', function (req, res) {  
-res.render('countrydash', {
-    page : 'Map',
-    mapelement : 'map',
-    datapoints: [
-      {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
-        {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},
-        {latitude: 55.4906916873, longitude: -4.60522901822, weight: 100},
-        {latitude: 55.8651840586, longitude: -4.2216469545 , weight: 100}
-      ]
-    
+app.get('/map', function (req, res) { 
+ data.listByQueryObject(req.query, function(e, results){
+  var out = [];
+  for (var i = results.length - 1; i >= 0; i--) {
+    var result = results[i];
+    out.push({latitude: result.latitude, longitude: result.longitude, weight:1})
+  };
+  res.render('countrydash', {
+      page : 'Map',
+      mapelement : 'map',
+      datapoints: out
+      
+    });
   });
 });
+
+
 
 
 app.get('/bargraph', function (req, res) {  
