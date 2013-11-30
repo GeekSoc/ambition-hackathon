@@ -87,14 +87,15 @@ res.render('account', {
 });
 
 app.post('/account',function (req, res) {
-  req.body.facebookId = req.user.facebookId;
-  req.body.name = {familyName:req.body.familyName,givenName:req.body.givenName};
-  req.body.familyName,req.body.givenName = null;
+  var user = req.user;
+  user.facebookId = req.user.facebookId;
+  user.name = {familyName:user.familyName,givenName:user.givenName};
+  user.familyName,req.body.givenName = null;
   //data.updatePerson(req.body);
-  console.log(JSON.stringify(req.user));
-  deriver.annotate(req.user, function(err, user){
+  console.log(JSON.stringify(user));
+  deriver.annotate(user, function(err, user){
     console.log(JSON.stringify(user));
-    data.updatePerson(req.user.facebookId,user);
+    data.updatePerson(user.facebookId,user);
     //console.log(JSON.stringify(req.body));
     res.statusCode = 200;
     return res.send('Inserted');
