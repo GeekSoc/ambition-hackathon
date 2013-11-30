@@ -121,6 +121,12 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+app.get('/about', function (req, res) {  
+res.render('about', {
+    page : 'About',
+        theme : 'yeti',
+  });
+});
 // API stuff
 app.get('/people', function (req, res) {
   data.listAllPeople(function(e, results){
