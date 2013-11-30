@@ -43,7 +43,7 @@ if ('development' == app.get('env')) {
 passport.use(new FacebookStrategy({
     clientID: config.facebookid,
     clientSecret: config.facebooksecret,
-    callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback"
+    callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback",
     profileFields: ['id', 'name', 'location','gender','birthday']
   },
   function(accessToken, refreshToken, profile, done) {
