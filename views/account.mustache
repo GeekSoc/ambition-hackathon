@@ -10,31 +10,37 @@
 							<h1>Account</h1>
 							{{#user}}
 								<form method="POST">
-								
+									
 									<label class="control-label" for="inputSmall">Forename</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{name.forename}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{name.givenName}}">
 									
 									<label class="control-label" for="inputSmall">Surname</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{name.surname}}">
-									
-									<label class="control-label" for="inputSmall">Given Name</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{name.givenName}}">
+									<input class="form-control input-sm" type="text" id="surname" value="{{name.familyName}}">
 									
 									
 									<label class="control-label" for="inputSmall">Gender</label>
 									<select class="form-control" name="gender">
-										<option value="male">Male</option>
-										<option value="female">Female</option>
-										<option value="other">Other</option>
+										<option id="male" value="male">Male</option>
+										<option id="female" value="female">Female</option>
+										<option id="other" value="other">Other</option>
 									</select>
+									
+									<label class="control-label" for="inputSmall">Gender</label>
+									<input class="form-control input-sm" type="text" id="gender" value="{{gender}}">
 									
 									
 									<label class="control-label" for="inputSmall">Location</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{location}}">
+									<input class="form-control input-sm" type="text" id="location" value="{{location}}">
 									
 									<label class="control-label" for="inputSmall">Birthday</label>
-									<input class="form-control input-sm datepicker" type="text" id="forename" value="{{birthday}}">
+									<input class="form-control input-sm datepicker" type="text" id="birthday" value="{{birthday}}">
 									
+									<label class="control-label" for="inputSmall">Birthday</label>
+									<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+										<input class="form-control input-sm datepicker" type="text" id="birthday" value="{{birthday}}">
+									</div>
+
+
 									<label class="control-label" for="inputSmall">Ethnicity</label>
 									<select class="form-control" name="ethnicity">
 										<option id="31">Asian or Asian British - Bangladeshi</option>
