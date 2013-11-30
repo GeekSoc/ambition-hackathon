@@ -257,7 +257,7 @@ app.get('/piechart/:information', function (req, res) {
   for (var i = results.length - 1; i >= 0; i--) {
     var result = results[i];
 
-    console.log("ED",result);
+    console.log("ED",result['internet']);
     if (result[information] == null){
 
       if (things["N/A"] == null){
