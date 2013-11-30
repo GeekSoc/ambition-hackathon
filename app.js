@@ -282,7 +282,7 @@ app.get('/piechart/:information', function (req, res) {
     res.render('dashboards/piechart', {
         page : 'Map',
         pie_element_name : 'graph',
-        datapoints: pointgen;
+        datapoints: pointgen
       });
     });
 });
