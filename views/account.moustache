@@ -15,7 +15,7 @@
 									<input class="form-control input-sm" type="text" id="forename" value="{{forename}}">
 									
 									<label class="control-label" for="inputSmall">Surname</label>
-									<input class="form-control input-sm" type="text" id="forename" value="{{surnamr}}">
+									<input class="form-control input-sm" type="text" id="forename" value="{{surname}}">
 									
 									<label class="control-label" for="inputSmall">Given Name</label>
 									<input class="form-control input-sm" type="text" id="forename" value="{{givenName}}">
@@ -38,6 +38,5 @@
 			</div>
 			<!-- Content End
 			================================================== -->
-{{user}}
 
 {{>footer}}
