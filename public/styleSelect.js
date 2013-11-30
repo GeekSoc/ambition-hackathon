@@ -14,8 +14,8 @@ function init() {
 	}
 	else {
 		//alert("loaded style from the cookie");
-		console.log('<link rel="stylesheet" type="text/css" href="theme/' + styleCookie + '/bootstrap.css">');
-		document.getElementById("myStyle").href = 'theme/' + styleCookie + '/bootstrap.css';
+		console.log('<link rel="stylesheet" type="text/css" href="/theme/' + styleCookie + '/bootstrap.css">');
+		document.getElementById("myStyle").href = '/theme/' + styleCookie + '/bootstrap.css';
 	}
 }
 
