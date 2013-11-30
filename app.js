@@ -93,7 +93,7 @@ app.post('/account',function (req, res) {
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.user));
   
-  deriver.annotate(req.body, function(error, user) {
+  deriver.annotate(deriver, req.body, function(error, user) {
   data.updatePerson(user.facebookId,user);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
