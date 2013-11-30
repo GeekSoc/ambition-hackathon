@@ -43,7 +43,8 @@ if ('development' == app.get('env')) {
 passport.use(new FacebookStrategy({
     clientID: config.facebookid,
     clientSecret: config.facebooksecret,
-    callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback"
+    callbackURL: "http://delta.dev.geeksoc.org/auth/facebook/callback",
+    profileFields: ['id', 'name', 'location','gender','birthday']
   },
   function(accessToken, refreshToken, profile, done) {
     data.findOne({ facebookId: profile.id }, function (err, user) {
@@ -69,6 +70,15 @@ passport.deserializeUser(function(id, done) {
 app.get('/', function (req, res) {  
 console.log(JSON.stringify(req.user));
 res.render('index', {
+		page : 'Main Page',
+        theme : 'yeti',
+		user : req.user
+	});
+});
+
+app.get('/account', function (req, res) {  
+console.log(JSON.stringify(req.user));
+res.render('account', {
 		page : 'Main Page',
         theme : 'yeti',
 		user : req.user
