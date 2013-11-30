@@ -234,7 +234,7 @@ app.get('/broadband', function (req, res) {
   availability['Yes'] = 0;
   availability['No']  = 0;
   for (var i = results.length - 1; i >= 0; i--) {
-    if (results[i].broadband == true){
+    if (results[i].internet == true){
       availability['Yes'] += 1;
     } else {
       availability['No'] += 1;
