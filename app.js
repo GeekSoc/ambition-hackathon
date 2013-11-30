@@ -92,10 +92,11 @@ app.post('/account',function (req, res) {
   req.body.familyName,req.body.givenName = null;
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.user));
+  
   data.updatePerson(req.user.facebookId,req.body);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
-  return res.send('Inserted');
+  return res.redirect('/account'); 
 });
 
 
