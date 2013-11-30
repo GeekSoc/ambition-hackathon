@@ -1,0 +1,33 @@
+{{>header}}
+
+			<!-- Content Start
+			================================================== -->
+			<div class="bs-docs-section" style="margin-top:0;">
+				<div class="page-header" style="margin-top:0px;">
+					<div class="row">
+						
+						<div class="col-lg-12">
+							<h1>Accounts</h1>
+							{{#user}}
+								<form>
+									<label class="control-label" for="inputSmall">Forename</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{x}}">
+									
+									<label class="control-label" for="inputSmall">Surname</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{x}}">
+									
+									<label class="control-label" for="inputSmall">Email</label>
+									<input class="form-control input-sm" type="text" id="forename" value="{{x}}">
+								</form>
+							{{/user}}
+									
+						</div>
+		
+					</div>
+				</div>
+			</div>
+			<!-- Content End
+			================================================== -->
+{{user}}
+
+{{>footer}}
