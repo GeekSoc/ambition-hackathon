@@ -187,7 +187,7 @@ app.get('/map', function (req, res) {
   for (var i = results.length - 1; i >= 0; i--) {
     var result = results[i];
     if (result.latitude != null && result.longitude != null){
-      out.push({latitude: result.latitude, longitude: result.longitude, weight:1})
+      out.push({latitude: result.latitude, longitude: result.longitude, weight:100})
     }
   };
   res.render('countrydash', {
