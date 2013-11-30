@@ -35,6 +35,16 @@
 										<li><a href="/">Home</a></li>
 										 <li><a href="/about">About</a></li>
 										 <li><a href="/account">Account</a></li>
+                                         {{#user.admin}}
+                                         <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Dashboards <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/persons">People</a></li>
+          <li><a href="/map">Map</a></li>
+          <li><a href="/bargraph">Bar Chart</a></li>
+        </ul>
+      </li>
+                                         {{/user.admin}}
 									</ul>
 									
 									 <ul class="nav navbar-nav pull-right">
