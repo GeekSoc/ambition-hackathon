@@ -1,0 +1,38 @@
+
+  <div class='mainCanvas' id='{{mapelement}}'>
+
+  </div>
+
+
+
+  {{> jquery}}
+  {{> openstreetmap}}
+  <script type="text/javascript">
+  var map = new OpenLayers.Map('{{mapelement}}', {
+    controls: [
+                      new OpenLayers.Control.Attribution(),
+                      new OpenLayers.Control.Navigation()
+                  ],
+                  maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,
+                                                   20037508.34,20037508.34),
+                  numZoomLevels: 12,
+                  maxResolution: 156543.0339,
+                  displayProjection: new OpenLayers.Projection("EPSG:4326"),
+                  units: 'm',
+                  projection: new OpenLayers.Projection("EPSG:4326")
+  });
+  var osm = new OpenLayers.Layer.OSM.Mapnik();
+    map.addLayer(osm);
+    map.setBaseLayer(osm);
+
+    map.zoomToMaxExtent();
+
+    var heatmap = new OpenLayers.Layer.HeatCanvas("HeatCanvas", map, {},{'step':1, 'degree':HeatCanvas.QUAD, 'opacity':0.5});
+    {{#datapoints}}
+      heatmap.pushData({{latitude}},{{longitude}},{{weight}});
+    {{/datapoints}}
+
+  
+    map.addLayer(heatmap);
+
+</script>
