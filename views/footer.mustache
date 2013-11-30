@@ -12,7 +12,7 @@
 						<p>Template &amp; Styles <a href="http://getbootstrap.com">(Bootswatch)</a> by <a href="http://thomaspark.me">Thomas Park</a>. Based on <a href="http://getbootstrap.com">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts">Google</a>.</p>
 						</small>
 
-						<form>
+						<form onsubmit="return change(document.getElementById('styleSelect').selectedIndex.value)">
 							<select name="styleSelect" id="styleSelect">
 								<option value="amelia" id="amelia">Amelia</option>
 								<option value="cerulean" id="cerulean">Cerulean</option>
@@ -28,7 +28,7 @@
 								<option value="united" id="united">United</option>
 								<option value="yeti" id="yeti">Yeti</option>
 							</select>
-							<button type="button" onclick="change(document.getElementById('styleSelect').selectedIndex.value)" class="btn btn-primary btn-xs">Change Style</button>
+							<button type="button" value="submit" class="btn btn-primary btn-xs">Change Style</button>
 						</form>
 					</div>
 				</div>
