@@ -87,8 +87,10 @@ res.render('account', {
 
 app.post('/account',function (req, res) {
   req.body.facebookId = req.user.facebookId;
+  req.body.name = {familyName:req.body.familyName,givenName:req.body.givenName};
+  req.body.familyName,req.body.givenName = null;
   //data.updatePerson(req.body);
-  console.log(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.user));
   data.updatePerson(req.user.facebookId,req.body);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
