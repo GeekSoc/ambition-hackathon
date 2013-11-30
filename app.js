@@ -90,7 +90,7 @@ app.post('/account',function (req, res) {
   var user = req.user;
   user.facebookId = req.user.facebookId;
   user.name = {familyName:user.familyName,givenName:user.givenName};
-  user.familyName,req.body.givenName = null;
+  user.familyName,user.givenName = null;
   //data.updatePerson(req.body);
   console.log(JSON.stringify(user));
   deriver.annotate(user, function(err, user){
