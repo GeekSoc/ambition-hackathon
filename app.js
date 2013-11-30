@@ -11,7 +11,8 @@ path = require('path'),
 FacebookStrategy = require('passport-facebook').Strategy,
 config = require('./config.js'),
 data = require('./lib/data.js'),
-mongojs = require('mongojs');
+mongojs = require('mongojs'),
+deriver = require('./lib/deriver.js');
 var path = require("path");
 
 var app = express();
@@ -215,6 +216,7 @@ app.get('/persons', function (req, res) {
 
 
 function generateUserFB(profile,done){
+
 var g = 2;
 if(profile.gender == "male"){
 g = 0;
@@ -222,6 +224,7 @@ g = 0;
 g = 1
 }
 var user = { facebookId: profile.id , name: profile.name,gender: g,location: profile.location,birthday: profile.birthday}
+deriver.annotate(user, function(err, user){
 data.addPerson(user);
 data.findOne(user, function (err, user) {
     if (err) return done(err);
@@ -229,6 +232,7 @@ data.findOne(user, function (err, user) {
       return done(err, user);
       }
     );
+});
 
 
 }
