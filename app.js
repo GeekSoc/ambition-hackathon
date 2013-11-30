@@ -216,7 +216,7 @@ res.render('dashboards/bargraph', {
 app.get('/piechart', function (req, res) {  
 res.render('dashboards/piechart', {
     page : 'Map',
-    bar_element_name : 'graph',
+    pie_element_name : 'graph',
     datapoints: [
       {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
         {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},

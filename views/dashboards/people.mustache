@@ -25,7 +25,7 @@
                             <tr>
                               <td>{{name.givenName}}</td>
                               <td>{{name.familyName}}</td>
-                              <td>{{gender}}</td>
+                              <td id = 'gender' value = {{gender}}></td>
                               <td>{{#deprived}}
                                           Yes <!-- If {like: true} --->
                                           {{/deprived}}
@@ -52,6 +52,17 @@
                     </div>
                 </div>
             </div>
+            <script>
+            $('tr td#gender').each(function(i,thing){
+            if(thing.value == 0){
+              thing.innerHTML = "Male";
+            }else if(thing.value == 1){
+              thing.innerHTML = "Female";
+            }else if(thing.value == 2){
+              thing.innerHTML = "Other";
+            }
+            });
+            </script>
             <!-- Content End
             ================================================== -->
 {{user}}
