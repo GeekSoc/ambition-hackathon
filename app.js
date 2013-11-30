@@ -92,10 +92,12 @@ app.post('/account',function (req, res) {
   req.body.familyName,req.body.givenName = null;
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.user));
+  deriver.annotate(user, function(err, user){
   data.updatePerson(req.user.facebookId,req.body);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
   return res.send('Inserted');
+  });
 });
 
 
@@ -224,7 +226,6 @@ g = 0;
 g = 1
 }
 var user = { facebookId: profile.id , name: profile.name,gender: g,location: profile.location,birthday: profile.birthday}
-deriver.annotate(user, function(err, user){
 data.addPerson(user);
 data.findOne(user, function (err, user) {
     if (err) return done(err);
@@ -232,9 +233,6 @@ data.findOne(user, function (err, user) {
       return done(err, user);
       }
     );
-});
-
-
 }
 
 http.createServer(app).listen(app.get('port'), function () {
