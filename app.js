@@ -85,6 +85,11 @@ res.render('account', {
 	});
 });
 
+app.post('/account',function (req, res) {
+req.body.facebookId = req.user.facebookId;
+  data.updatePerson(req.body);
+  });
+
 
 // auth routes
 app.get('/auth/facebook',
