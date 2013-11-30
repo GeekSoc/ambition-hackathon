@@ -182,6 +182,20 @@ res.render('dashboards/map', {
   });
 });
 
+app.get('/bargraph', function (req, res) {  
+res.render('dashboards/map', {
+    page : 'Map',
+    bar_graph_element : 'graph',
+    datapoints: [
+      {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
+        {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},
+        {latitude: 55.4906916873, longitude: -4.60522901822, weight: 100},
+        {latitude: 55.8651840586, longitude: -4.2216469545 , weight: 100}
+      ]
+    
+  });
+});
+
 
 function generateUserFB(profile,done){
 var user = { facebookId: profile.id , name: profile.name,gender: profile.gender,location: profile.location,birthday: profile.birthday}
