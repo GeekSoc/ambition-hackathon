@@ -236,7 +236,8 @@ app.get('/broadband', function (req, res) {
     } else {
       availability['No'] += 1;
     }
-  };
+  }
+  console.log(availability);
     res.render('dashboards/piechart', {
         page : 'Map',
         pie_element_name : 'graph',
