@@ -179,7 +179,7 @@ app.put('/people/:id', function (req, res) {
   });
 
 app.get('/map', function (req, res) {  
-res.render('dashboards/map', {
+res.render('countrydash', {
     page : 'Map',
     mapelement : 'map',
     datapoints: [
