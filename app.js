@@ -89,7 +89,11 @@ app.post('/account',function (req, res) {
 //req.body.facebookId = req.user.facebookId;
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.body));
-  });
+  data.updatePerson(req.user.facebookIdreq.body);
+  //console.log(JSON.stringify(req.body));
+  res.statusCode = 200;
+  return res.send('Inserted');
+});
 
 
 // auth routes
