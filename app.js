@@ -186,6 +186,7 @@ res.render('dashboards/map', {
   });
 });
 
+
 app.get('/bargraph', function (req, res) {  
 res.render('dashboards/bargraph', {
     page : 'Map',
@@ -198,6 +199,16 @@ res.render('dashboards/bargraph', {
       ]
     
   });
+});
+
+
+app.get('/persons', function (req, res) {  
+  data.listAllPeople(function(e, people){
+    res.render('dashboards/people', {
+        page : 'People',
+        persons : people
+      });
+    });
 });
 
 
