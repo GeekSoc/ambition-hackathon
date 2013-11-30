@@ -86,9 +86,9 @@ res.render('account', {
 });
 
 app.post('/account',function (req, res) {
-//req.body.facebookId = req.user.facebookId;
+  req.body.facebookId = req.user.facebookId;
   //data.updatePerson(req.body);
-  console.log(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.user));
   data.updatePerson(req.user.facebookId,req.body);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
