@@ -213,7 +213,7 @@ res.render('dashboards/bargraph', {
   });
 });
 
-app.get('/bargraph', function (req, res) {  
+app.get('/piechart', function (req, res) {  
 res.render('dashboards/piechart', {
     page : 'Map',
     bar_element_name : 'graph',
