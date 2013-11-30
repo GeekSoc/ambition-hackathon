@@ -8,16 +8,20 @@
   {{> jquery}}
   {{> openstreetmap}}
   <script type="text/javascript">
+  var lat = 55.5; 
+  var lon = -2.80; 
+  var zoom = 5;
+  var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984 
+  var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection 
   var map = new OpenLayers.Map('{{mapelement}}', {
     controls: [
                       new OpenLayers.Control.Attribution(),
                       new OpenLayers.Control.PanZoomBar(),
                       new OpenLayers.Control.Navigation()
                   ],
-                  maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,
-                                                   20037508.34,20037508.34),
+                  
                   numZoomLevels: 12,
-                  maxResolution: 156543.0339,
+                  maxResolution: 15.0339,
                   displayProjection: new OpenLayers.Projection("EPSG:4326"),
                   units: 'm',
                   projection: new OpenLayers.Projection("EPSG:4326")
@@ -26,7 +30,7 @@
     map.addLayer(osm);
     map.setBaseLayer(osm);
 
-    map.zoomToMaxExtent();
+    map.setCenter(new OpenLayers.LonLat(lon,lat).transform(fromProjection,toProjection), zoom);
 
     var heatmap = new OpenLayers.Layer.HeatCanvas("HeatCanvas", map, {},{'step':1, 'degree':HeatCanvas.QUAD, 'opacity':0.5});
     {{#datapoints}}
