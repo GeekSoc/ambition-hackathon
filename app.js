@@ -185,7 +185,7 @@ res.render('dashboards/map', {
 app.get('/bargraph', function (req, res) {  
 res.render('dashboards/bargraph', {
     page : 'Map',
-    bar_graph_element : 'graph',
+    bar_element_name : 'graph',
     datapoints: [
       {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
         {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},
