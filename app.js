@@ -135,7 +135,7 @@ app.get('/people/:thing/:id', function (req, res) {
     });
   });
   
-app.post('/search', function (req, res) {
+app.get('/search', function (req, res) {
   data.listByQueryObject(req.query, function(e, results){
       res.send(results);
     });
