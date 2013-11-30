@@ -93,10 +93,12 @@ app.post('/account',function (req, res) {
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.user));
   
-  data.updatePerson(req.user.facebookId,req.body);
+  deriver.annotate(req.body, function(error, user) {
+  data.updatePerson(req.user.facebookId,user);
   //console.log(JSON.stringify(req.body));
   res.statusCode = 200;
   return res.redirect('/account'); 
+  });
 });
 
 
