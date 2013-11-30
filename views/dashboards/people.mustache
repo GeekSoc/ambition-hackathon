@@ -15,6 +15,8 @@
                                   <th>Last Name</th>
                                   <th>Gender</th>
                                   <th>Deprived?</th>
+                                  <th>Rural Classification</th>
+                                  <th>Broadband? (>2mbps)</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -24,7 +26,19 @@
                               <td>{{name.givenName}}</td>
                               <td>{{name.familyName}}</td>
                               <td>{{gender}}</td>
-                              <td>{{deprived}}</td>
+                              <td>{{#deprived}}
+                                          Yes <!-- If {like: true} --->
+                                          {{/deprived}}
+                                          {{^deprived}}
+                                          No <!-- If {like: false} --->
+                                          {{/deprived}}</td>
+                              <td>{{ruralClassification}}</td>
+                              <td><span>  {{#internet}}
+                                          Yes <!-- If {like: true} --->
+                                          {{/internet}}
+                                          {{^internet}}
+                                          No <!-- If {like: false} --->
+                                          {{/internet}}</span></td>
                             </tr>
 
                             

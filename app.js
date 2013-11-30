@@ -209,7 +209,7 @@ res.render('dashboards/bargraph', {
 
 
 app.get('/persons', function (req, res) {  
-  data.listAllPeople(function(e, people){
+  data.listByQueryObject({},function(e, people){
     res.render('dashboards/people', {
         page : 'People',
         persons : people
