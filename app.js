@@ -89,6 +89,8 @@ app.post('/account',function (req, res) {
 //req.body.facebookId = req.user.facebookId;
   //data.updatePerson(req.body);
   console.log(JSON.stringify(req.body));
+  res.statusCode = 200;
+  return res.send('Inserted');
   });
 
 
@@ -172,20 +174,6 @@ app.get('/map', function (req, res) {
 res.render('dashboards/map', {
     page : 'Map',
     mapelement : 'map',
-    datapoints: [
-      {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
-        {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},
-        {latitude: 55.4906916873, longitude: -4.60522901822, weight: 100},
-        {latitude: 55.8651840586, longitude: -4.2216469545 , weight: 100}
-      ]
-    
-  });
-});
-
-app.get('/bargraph', function (req, res) {  
-res.render('dashboards/bargraph', {
-    page : 'Map',
-    bar_element_name : 'graph',
     datapoints: [
       {latitude: 55.8506080519, longitude: -4.26492576329, weight: 100},
         {latitude: 55.8613701277, longitude: -4.24460130892, weight: 100},
