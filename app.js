@@ -277,7 +277,7 @@ app.get('/piechart/:information', function (req, res) {
   var pointgen = [];
   for (var i = keys.length - 1; i >= 0; i--) {
     var key = keys[i];
-    var comma = (keys > 0);
+    var comma = (i > 0);
     pointgen.push({"label": key, "value": things[key], "comma": comma});
   };
     res.render('dashboards/piechart', {
