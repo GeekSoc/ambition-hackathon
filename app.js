@@ -233,6 +233,18 @@ res.render('dashboards/piechart', {
 app.get('/persons', function (req, res) {  
   data.listByQueryObject({},function(e, people){
     console.log(people);
+    for (var i=0;i<people.length;i++)
+{ 
+var person = people[i];
+if(person.gender == 0){
+              person.gender = "Male";
+            }else if(person.gender == 1){
+              person.gender = "Female";
+            }else if(person.gender == 2){
+              person.gender = "other";
+            }
+            people[i] = person;
+}
     res.render('dashboards/people', {
         page : 'People',
         persons: people
